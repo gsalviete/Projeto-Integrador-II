@@ -19,10 +19,6 @@ O projeto busca simular a interface de um sistema condominial que permita:
 - 🧩 Design system próprio com cores, ícones e fontes definidos
 - 📱 Layout responsivo pensado para desktop (1440x1024)
 
-## 📚 Contexto Acadêmico
-
-Este projeto foi desenvolvido por [Seu Nome] e integrantes do grupo durante o semestre letivo de [período ou ano], sob orientação do professor [Nome do Professor], com foco na aplicação de conceitos de design de interfaces, usabilidade e solução de problemas reais.
-
 ## 📁 Estrutura do Protótipo
 
 - `Página Inicial`: Central de Controle com resumo geral
@@ -34,7 +30,6 @@ Este projeto foi desenvolvido por [Seu Nome] e integrantes do grupo durante o se
 
 ✅ Protótipo em desenvolvimento  
 📌 Próximas etapas:  
-- Finalização das páginas “Avisos” e “Mensagens”  
 - Ajustes na responsividade  
 - Implementação em código
 
