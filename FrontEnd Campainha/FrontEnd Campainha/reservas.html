@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campainha - Central de Controle</title>
+  <link rel="stylesheet" href="campainha.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo_pp">
+        <img src="imagens/logobranca.png" alt="Logo Campainha">
+        <span>CAMPAINHA</span>
+      </div>
+      <nav class="menu">
+        <a href="paginaPrincipal.html"> Início</a>
+        <a href="avisos.html" > Avisos</a>
+        <a href="mensagens.html">Mensagens</a>
+        <a href="regras.html"> Regras</a>
+         <a href="reservas.html" class="active"> Reservas</a>
+        <a href="campainha.html">Sair</a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+     <section class="cabecalho">
+        <div class="centralc">
+          <p></p>
+          <h1>RESERVAS</h1>
+          <img src="imagens/image-160.png" alt="Ilustração de Regras">
+        </div>
+      </section>
+
+      <div class="reservas-body">
+      <div class="reservas-container">
+    <div class="areas">
+      <button onclick="abrirFormulario('Salão de Festa 1')">Salão de Festa 1</button>
+      <button onclick="abrirFormulario('Salão Gourmet')">Salão Gourmet</button>
+      <button onclick="abrirFormulario('Churrasqueira')">Churrasqueira</button>
+      <button onclick="abrirFormulario('Salão de Festa 2')">Salão de Festa 2</button>
+    </div>
+
+    <div id="formulario-reserva" class="form-box hidden">
+      <h2 id="titulo-area"></h2>
+      <form onsubmit="verificarDisponibilidade(event)">
+        <input type="text" name="nome" placeholder="Nome completo" required />
+        <input type="text" name="apto" placeholder="Apartamento" required />
+        <input type="date" name="data" required />
+        <input type="time" name="hora" required />
+        <input type="hidden" name="area" id="area-selecionada" />
+        <button type="submit">Reservar</button>
+      </form>
+      <p id="mensagem-status"></p>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const reservasExistentes = [
+      { area: 'Salão de Festa 1', data: '2025-06-12', hora: '18:00' },
+      { area: 'Churrasqueira', data: '2025-06-15', hora: '12:00' },
+    ];
+
+    function abrirFormulario(area) {
+      document.getElementById("formulario-reserva").classList.remove("hidden");
+      document.getElementById("titulo-area").textContent = `Reserva para ${area}`;
+      document.getElementById("area-selecionada").value = area;
+      document.getElementById("mensagem-status").textContent = '';
+    }
+
+    function verificarDisponibilidade(e) {
+      e.preventDefault();
+      const form = e.target;
+      const area = form.area.value;
+      const data = form.data.value;
+      const hora = form.hora.value;
+
+      const jaReservado = reservasExistentes.some(r =>
+        r.area === area && r.data === data && r.hora === hora
+      );
+
+      const mensagem = document.getElementById("mensagem-status");
+
+      if (jaReservado) {
+        mensagem.textContent = "Esta data e horário já estão ocupados!";
+        mensagem.style.color = "red";
+      } else {
+        mensagem.textContent = "Reserva realizada com sucesso!";
+        mensagem.style.color = "green";
+        reservasExistentes.push({ area, data, hora });
+        form.reset();
+      }
+    }
+  </script>
+    </main>
+  </div>
+
+<footer>
+    <div class="rodape-conteudo">
+      
+      
+      <div class="rodape-logo">
+        <img src="imagens/logobranca.png" alt="Logo">
+        <span class="rodape-titulo">CAMPAINHA</span>
+      </div>
+     
+      <div class="rodape-contato">
+        <p>Email: contato@campainha.com</p>
+        <p>Telefone: (21) 99999-9999</p>
+      </div>
+    </div>
+    
+    <div class="rodape-copy">
+        <p>&copy; 2025 Campainha. Todos os direitos reservados.</p>
+      </div>
+  
+  </footer>
+    
+    
